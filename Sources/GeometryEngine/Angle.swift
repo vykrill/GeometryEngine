@@ -1,7 +1,10 @@
-/// Angle.swift
-///
-/// A property wrapper for angles
+// Angle.swift
+// Created by Jérémy Goyette
+// For GeometryEngine
+// June 5th, 2020
+//
 
+/// A property wrapper for angles.
 @propertyWrapper
 struct Angle {
 

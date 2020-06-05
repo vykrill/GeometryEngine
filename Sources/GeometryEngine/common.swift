@@ -1,6 +1,9 @@
-/// common.swift
-///
-/// contains global variables commonly used in the Geometry Engine
+// common.swift
+// Created by Jérémy Goyette
+// For GeometryEngine
+// June 5th, 2020
+//
+// contains global variables commonly used in the Geometry Engine
 
 import Foundation
 
