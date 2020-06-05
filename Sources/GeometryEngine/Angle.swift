@@ -18,6 +18,11 @@ struct Angle {
          }
     }
 
+    /// The value of the angle comprised between `-π` and `+π`.
+    var projectedValue: Double {
+        value <= π ? value : value - (2 * π)
+    }
+
     /// Creates a new angle of 0 rad.
     init() { self.value = 0.0 }
     /// Creates a new angle with the specified value.
