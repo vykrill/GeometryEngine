@@ -18,6 +18,13 @@ struct Angle {
          }
     }
 
+    /// Creates a new angle of 0 rad.
+    init() { self.value = 0.0 }
+    /// Creates a new angle with the specified value.
+    init(wrappedValue: Double) {
+        self.value = wrappedValue
+    }
+
     /// Bounds the specified angle to a value between `0` and `2π`.
     /// - parameters:
     ///     - angle: The angle to bounds.
