@@ -7,8 +7,15 @@
 import Foundation
 
 extension Double {
-    func rounded(toPlace place: Int) -> Double { 
+    /// Rounds the number to the specified number of places.
+    /// - parameter place: The place to round the number too.
+    /// - returns: The rounded number.
+    func rounded(toPlace place: Int, rule: FloatingPointRoundingRule = .toNearestOrAwayFromZero) -> Double { 
         let factor = pow(10.0, Double(place))
-        return (self * factor).rounded() / factor
+        return (self * factor).rounded(rule) / factor
+    }
+
+    static func ~=(_ left: Double, _ right: Double) -> Bool {
+        areApproximatelyEquals(left, and: right, precision: 5)
     }
 }
