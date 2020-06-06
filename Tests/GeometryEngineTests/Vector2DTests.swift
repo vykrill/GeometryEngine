@@ -10,6 +10,7 @@ final class Vector2DTests: XCTestCase {
 
         // init with length and direction
         let vect2 = Vector2D(length: (sqrt(2) / 2), angle: Double.pi / 4)
+        // Should be equal de vect1
         XCTAssertEqual(vect2, vect1)
     }
 

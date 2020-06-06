@@ -15,6 +15,7 @@ extension Double {
         return (self * factor).rounded(rule) / factor
     }
 
+    /// Checks if two numbers are approximately equal.
     static func ~=(_ left: Double, _ right: Double) -> Bool {
         areApproximatelyEquals(left, and: right, precision: 5)
     }

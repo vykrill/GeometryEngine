@@ -71,6 +71,8 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
 
     // - MARK: Equatable
     static func == (left: Vector2D, right: Vector2D) -> Bool{
+        // We use the ~= operator to prevent unwanted inequalities caused by floating-point 
+        //  numbers.
         left.x ~= right.x && right.y ~= left.y
     }
 }
