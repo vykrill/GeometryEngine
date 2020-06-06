@@ -20,7 +20,7 @@ struct Angle {
 
     /// The value of the angle comprised between `-π` and `+π`.
     var projectedValue: Double {
-        value <= π ? value : value - (2 * π)
+        Self.getRelativeAngle(of: value)
     }
 
     /// Creates a new angle of 0 rad.
@@ -28,6 +28,10 @@ struct Angle {
     /// Creates a new angle with the specified value.
     init(wrappedValue: Double) {
         self.value = wrappedValue
+    }
+
+    static func getRelativeAngle(of angle: Double) -> Double {
+        return angle <= π ? angle : angle - (2 * π)
     }
 
     /// Bounds the specified angle to a value between `0` and `2π`.
