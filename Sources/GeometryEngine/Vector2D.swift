@@ -34,6 +34,14 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
     /// Creates a new null vector.
     init() {self.storage = [0.0, 0.0] }
 
+    /// Creates a new vector based on the given length and direction.
+    /// - parameters:
+    ///     * length: The length of the vector.
+    ///     * angle: The angle of the vector.
+    init(length: Double, angle: Double) {
+        self.storage = [length * cos(angle), length * sin(angle)]
+    }
+
     // - MARK: @dynamicMemberLookup
     subscript(dynamicMember keyPath: KeyPath<SIMD2<Double>, Double>) -> Double { storage[keyPath: keyPath] }
 
