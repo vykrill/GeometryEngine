@@ -32,7 +32,7 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
     }
 
     /// Creates a new null vector.
-    init() {self.storage = [0.0, 0.0] }
+    init() { self.storage = [0.0, 0.0] }
 
     /// Creates a new vector based on the given length and direction.
     /// - parameters:
@@ -40,6 +40,23 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
     ///     * angle: The angle of the vector.
     init(length: Double, angle: Double) {
         self.storage = [length * cos(angle), length * sin(angle)]
+    }
+
+    /// Tests if two vectors' direction are opposite to each other.
+    /// - parameter vect: The other vector to test.
+    /// - returns: `true` if the vectors' direction are opposite to each other.
+    func isOpposite(to vect: Vector2D) -> Bool {
+        let angle1 = Angle.getRelativeAngle(of: self.angle)
+        let angle2 = Angle.getRelativeAngle(of: vect.angle)
+
+        return abs(angle1 - angle2) == π
+    }
+
+    /// Tests if two vectors are parallel.
+    /// - parameter vect: The other vector to test.
+    /// - returns: `true` if the two vectors are parallel.
+    func isParallel(to vect: Vector2D) -> Bool {
+        return (self.angle == vect.angle) || self.isOpposite(to: vect)
     }
 
     // - MARK: @dynamicMemberLookup
