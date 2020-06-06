@@ -68,4 +68,9 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
     init(arrayLiteral elements: ArrayLiteralElement...) {
         self.storage = SIMD2<Double>(elements)
     }
+
+    // - MARK: Equatable
+    static func == (left: Vector2D, right: Vector2D) -> Bool{
+        left.x ~= right.x && right.y ~= left.y
+    }
 }
