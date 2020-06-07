@@ -12,7 +12,7 @@ import Foundation
 ///     let v1: Vector2D = [0.0, 1.0]
 @dynamicMemberLookup
 struct Vector2D: Equatable, ExpressibleByArrayLiteral {
-    private var storage = SIMD2<Double>()
+    fileprivate var storage = SIMD2<Double>()
 
     /// The length of the vector.
     var length: Double { sqrt(pow(self.x, 2) + pow(self.y, 2)) }
@@ -81,5 +81,24 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
         // We use the ~= operator to prevent unwanted inequalities caused by floating-point 
         //  numbers.
         left.x ~= right.x && right.y ~= left.y
+    }
+}
+
+// - MARK: Operators
+extension Vector2D {
+    static func +(left: Vector2D, right: Vector2D) -> Vector2D {
+        Vector2D(from: left.storage + right.storage)
+    }
+
+    static func +=(left: inout Vector2D, right: Vector2D) {
+        left = left + right
+    }
+
+    static func -(left: Vector2D, right: Vector2D) -> Vector2D {
+        Vector2D(from: left.storage - right.storage)
+    }
+
+    static func -=(left: inout Vector2D, right: Vector2D) {
+        left = left - right
     }
 }
