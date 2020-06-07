@@ -4,7 +4,7 @@ import XCTest
 final class LineTests: XCTestCase {
     func testInits() {
         let l1 = Line([0, 0], [1, 1])
-        
+        print(l1)
         XCTAssertEqual(l1.p1, [0, 0])
         XCTAssertEqual(l1.p2, [1, 1])
     }

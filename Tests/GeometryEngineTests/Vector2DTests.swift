@@ -5,6 +5,7 @@ final class Vector2DTests: XCTestCase {
     func testInits() {
         // init from array litteral
         let vect1: Vector2D = [ 0.5, 0.5]
+        print(vect1)
         XCTAssertEqual(vect1.x, 0.5)
         XCTAssertEqual(vect1.y, 0.5)
 
