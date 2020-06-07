@@ -42,6 +42,13 @@ struct Vector2D: Equatable, ExpressibleByArrayLiteral {
         self.storage = [length * cos(angle), length * sin(angle)]
     }
 
+    /// Creates a new Vector2D from the given `SIMD2<Double>` instance.
+    /// - parameter value: The `SIMD2` instance containing the data of the new vector.
+    /// - returns: A new vector.
+    init(from value: SIMD2<Double>) {
+        self.storage = value
+    }
+
     /// Tests if two vectors' direction are opposite to each other.
     /// - parameter vect: The other vector to test.
     /// - returns: `true` if the vectors' direction are opposite to each other.
