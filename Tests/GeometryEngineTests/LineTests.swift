@@ -19,8 +19,22 @@ final class LineTests: XCTestCase {
         XCTAssertEqual(l1.minY, 4)
     }
 
+    func testContains() {
+        let l1 = Line([-1, 6], [3, 10])
+
+        XCTAssertTrue(l1.contains([-1, 6])) // First point
+        XCTAssertTrue(l1.contains([3, 10])) // Last point
+        XCTAssertTrue(l1.contains([0, 7])) // middle point
+
+        XCTAssertFalse(l1.contains([1, 1])) // Random point
+        XCTAssertFalse(l1.contains([-2, 5])) // Before first point
+        XCTAssertFalse(l1.contains([4, 11])) // After last point
+
+    }
+
     static var allTests = [
         ("testInits", testInits),
-        ("testComputed", testComputedProperties)
+        ("testComputed", testComputedProperties),
+        ("testContains", testContains)
     ]
 }

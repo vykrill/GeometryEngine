@@ -38,4 +38,16 @@ struct Line {
         self.p1 = p1
         self.p2 = p2
     }
+
+    /// Checks if the line contains the specified point.
+    /// - parameter point: The point to test.
+    /// - returns `true` if the point is contained in the line.
+    func contains(_ point: Vector2D) -> Bool {
+        if p1 == point {
+            return true
+        } else {
+            let testVector = point - p1
+            return self.vector.angle ~= testVector.angle && testVector.length <= self.vector.length
+        }
+    }
 }
