@@ -28,4 +28,14 @@ struct Line {
     var maxY: Double { max(p1.y, p2.y) }
     /// The minimum y value of the line.
     var minY: Double { min(p1.y, p2.y) }
+
+    /// Creates a new instance from the given points.
+    /// - parameters: 
+    ///     * p1: The first point composing the line.
+    ///     * p2: The second point composing the line.
+    /// - returns: A new line instance.
+    init(_ p1: Vector2D, _ p2: Vector2D ) {
+        self.p1 = p1
+        self.p2 = p2
+    }
 }
