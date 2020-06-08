@@ -32,9 +32,30 @@ final class LineTests: XCTestCase {
 
     }
 
+    func testIntersections() {
+        let none = CollisionTestResult.none
+
+        let l1 = Line([3, 3], [4, 4])
+        let l2 = Line([0, 0], [1, 1])
+        let l3 = Line([0, 0], [10, 10])
+        let l4 = Line([3.5, 3.5], [0, 0])
+        let l5 = Line([-2, 2], [3, 2])
+        let l6 = Line([0, 0], [3, 3])
+        let l7 = Line([0, 2], [4, 0])
+
+        // l1.intersect(l2)
+        XCTAssertEqual(Line.getIntersectionBetween(l1, and: l2), none)
+        XCTAssertNotEqual(Line.getIntersectionBetween(l1, and: l3), none)
+        XCTAssertNotEqual(Line.getIntersectionBetween(l1, and: l4), none)
+
+        XCTAssertNotEqual(Line.getIntersectionBetween(l3, and: l5), none)
+        XCTAssertNotEqual(Line.getIntersectionBetween(l6, and: l7), none)
+    }
+
     static var allTests = [
-        ("testInits", testInits),
-        ("testComputed", testComputedProperties),
-        ("testContains", testContains)
+        ("LineInits", testInits),
+        ("LineComputed", testComputedProperties),
+        ("LineContains", testContains),
+        ("LineIntersections", testIntersections)
     ]
 }
