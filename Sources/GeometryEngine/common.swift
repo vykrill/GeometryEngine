@@ -17,5 +17,5 @@ let π = Double.pi
 ///     * precision: the precision to keep for the equality. Equals to `5` by default.
 /// - returns: `true` if the numbers are approximately equal, otherwise `false`.
 func areApproximatelyEquals(_ n1: Double, and n2: Double, precision: Int = 5) -> Bool {
-    n1.rounded(toPlace: precision, rule: .towardZero) == n2.rounded(toPlace: precision, rule: .towardZero)
+    n1.rounded(toPlace: precision) == n2.rounded(toPlace: precision)
 }
