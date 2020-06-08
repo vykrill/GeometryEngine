@@ -4,13 +4,15 @@
 // June 7th, 2020
 //
 
+import Foundation
+
 /// A line in 2D space.
 ///
 /// A line is represented by two `Vector2D` instances. It can then be used for composing polygons. You create a new `Line` by giving its twos points.
 ///
 ///     // Creates a line from (0, 0) to (1, 0).
 ///     let line = Line([0, 0], [1, 0])
-struct Line {
+struct Line: Equatable {
     /// The first point composing the line.
     var p1: Vector2D
     /// The second point composign the line.

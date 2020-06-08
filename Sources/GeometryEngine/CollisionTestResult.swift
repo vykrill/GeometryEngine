@@ -4,7 +4,7 @@
 // June 7th, 2020
 //
 
-enum CollisionTestResult {
+enum CollisionTestResult: Equatable {
 
     /// There is no collision.
     case none
