@@ -59,6 +59,23 @@ struct Line: Equatable {
         }
     }
 
+    /// Checks for intersection with another line.
+    /// 
+    /// This method is just a shortcut for the `Line.getIntersectionBetween(_: and:)`
+    ///          method. These two lines of code are equivalent:
+    ///
+    ///     let _ = Line.getIntersectionBetween(l1, and l2)
+    ///     let _ = l1.intersection(with: l2)
+    ///
+    /// - parameter line: The line to test intersection with.
+    /// - returns: The appropriate `CollisionTestResult` depending of the intersection.
+    ///             Check `CollisionTestResult`'s documentation for more detail. 
+    func intersection(with line: Line) -> CollisionTestResult { 
+        Self.getIntersectionBetween(self, and: line) 
+    }
+
+    // - MARK: Static methods
+
     /// Checks for intersection between two lines.
     /// - parameters: 
     ///     * line1: The first line.

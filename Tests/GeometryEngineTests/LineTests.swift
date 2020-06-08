@@ -44,12 +44,16 @@ final class LineTests: XCTestCase {
         let l7 = Line([0, 2], [4, 0])
 
         // l1.intersect(l2)
-        XCTAssertEqual(Line.getIntersectionBetween(l1, and: l2), none)
-        XCTAssertNotEqual(Line.getIntersectionBetween(l1, and: l3), none)
-        XCTAssertNotEqual(Line.getIntersectionBetween(l1, and: l4), none)
+        XCTAssertEqual(l1.intersection(with: l2), none)
+        XCTAssertNotEqual(l1.intersection(with: l3), none)
+        XCTAssertNotEqual(l1.intersection(with: l4), none)
 
-        XCTAssertNotEqual(Line.getIntersectionBetween(l3, and: l5), none)
-        XCTAssertNotEqual(Line.getIntersectionBetween(l6, and: l7), none)
+        print(Line.getIntersectionBetween(l1, and: l6))
+
+        XCTAssertNotEqual(l3.intersection(with: l5), none)
+        XCTAssertEqual(l3.intersection(with: l5), CollisionTestResult.point(position: [2.0, 2.0]))
+        XCTAssertNotEqual(l6.intersection(with: l7), none)
+    
     }
 
     static var allTests = [
