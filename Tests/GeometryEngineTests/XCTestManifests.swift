@@ -5,7 +5,8 @@ public func allTests() -> [XCTestCaseEntry] {
     return [
          testCase(Vector2DTests.allTests),
          testCase(CommonTests.allTests),
-         testCase(LineTests.allTests)
+         testCase(LineTests.allTests),
+         testCase(AngleTests.allTests)
     ]
 }
 #endif

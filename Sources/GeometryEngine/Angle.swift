@@ -34,6 +34,11 @@ struct Angle {
         return angle <= π ? angle : angle - (2 * π)
     }
 
+    /// Returns the angle between two angles.
+    static func getDifferenceBetween(_ a1: Double, and a2: Double) -> Double {
+        abs(getRelativeAngle(of: a1) - getRelativeAngle(of: a2))
+    }
+
     /// Bounds the specified angle to a value between `0` and `2π`.
     /// - parameters:
     ///     - angle: The angle to bounds.
