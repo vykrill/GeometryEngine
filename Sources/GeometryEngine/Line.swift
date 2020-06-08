@@ -29,6 +29,11 @@ struct Line {
     /// The minimum y value of the line.
     var minY: Double { min(p1.y, p2.y) }
 
+    /// The angle of the line.
+    var angle: Double { vector.angle }
+    /// The length of the line.
+    var length: Double { vector.length }
+
     /// Creates a new instance from the given points.
     /// - parameters: 
     ///     * p1: The first point composing the line.
