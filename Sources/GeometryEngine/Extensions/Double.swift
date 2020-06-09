@@ -15,6 +15,16 @@ extension Double {
         return (self * factor).rounded(rule) / factor
     }
 
+     /// Checks the equality between two `Double` with a lower precision.
+    /// - parameters:
+    ///     * n1: The first number to compare.
+    ///     * n2: The second number to compare.
+    ///     * precision: the precision to keep for the equality. Equals to `5` by default.
+    /// - returns: `true` if the numbers are approximately equal, otherwise `false`.
+    static func areApproximatelyEqual(_ n1: Double, and n2: Double, precision: Int = 5) -> Bool {
+         n1.rounded(toPlace: precision) == n2.rounded(toPlace: precision)
+    }
+
     /// Checks if two numbers are approximately equal.
     static func ~=(_ left: Double, _ right: Double) -> Bool {
         areApproximatelyEqual(left, and: right, precision: Self.equalityPrecision)
