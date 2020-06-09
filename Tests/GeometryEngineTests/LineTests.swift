@@ -48,7 +48,7 @@ final class LineTests: XCTestCase {
         XCTAssertNotEqual(l1.intersection(with: l3), none)
         XCTAssertNotEqual(l1.intersection(with: l4), none)
 
-        print(Line.getIntersectionBetween(l1, and: l6))
+        print(Line.getIntersection(between: l1, and: l6))
 
         XCTAssertNotEqual(l3.intersection(with: l5), none)
         XCTAssertEqual(l3.intersection(with: l5), CollisionTestResult.point(position: [2.0, 2.0]))

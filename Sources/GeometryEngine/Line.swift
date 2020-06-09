@@ -71,7 +71,7 @@ struct Line: Equatable {
     /// - returns: The appropriate `CollisionTestResult` depending of the intersection.
     ///             Check `CollisionTestResult`'s documentation for more detail. 
     func intersection(with line: Line) -> CollisionTestResult { 
-        Self.getIntersectionBetween(self, and: line) 
+        Self.getIntersection(between: self, and: line) 
     }
 
     // - MARK: Static methods
@@ -83,8 +83,8 @@ struct Line: Equatable {
     ///
     /// - returns: The appropriate `CollisionTestResult` depending of the intersection.
     ///             Check `CollisionTestResult`'s documentation for more detail. 
-    static func getIntersectionBetween(_ line1: Line, and line2: Line) -> CollisionTestResult {
-        if let point = Line.getIntersectionPointBetween(line1, and: line2) {
+    static func getIntersection(between line1: Line, and line2: Line) -> CollisionTestResult {
+        if let point = Line.getIntersectionPoint(between: line1, and: line2) {
             // The two lines are not parallel.
             if line1.contains(point) && line2.contains(point) {
                 return.point(position: point)
@@ -93,7 +93,7 @@ struct Line: Equatable {
             }
         } else {
             // The two lines are parallel
-            return getOverlapBetween(line1, and: line2)
+            return getOverlap(between: line1, and: line2)
         }
     }
 
@@ -104,16 +104,16 @@ struct Line: Equatable {
     /// - note: The returned point might not be part of either line as they will be 
     ///          considered like infinite lines.
     /// - returns: `nil` if the two lines are parallel, otherwise the intersection point.
-    static private func getIntersectionPointBetween(_ line1: Line, and line2: Line) -> Vector2D? {
+    static private func getIntersectionPoint(between line1: Line, and line2: Line) -> Vector2D? {
         guard !line1.vector.isParallel(to: line2.vector) else { return nil }
 
         // Angle between the two lines.
-        let angle1 = Angle.getDifferenceBetween(line1.angle, and: line2.angle)
+        let angle1 = Angle.getDifference(between: line1.angle, and: line2.angle)
         
         let vector1 = line2.p2 - line1.p1
 
         // Angle between line1 and vector1.
-        var angle2 = Angle.getDifferenceBetween(vector1.angle, and: line1.angle)
+        var angle2 = Angle.getDifference(between: vector1.angle, and: line1.angle)
         if angle2 > π { angle2 -= π }
 
         // Length to remove from line2.
@@ -130,7 +130,7 @@ struct Line: Equatable {
     /// - returns: `nil` if the two lines are not colinear. If they are, it returns the line 
     ///             composing the overlap. The only exception is when the lenght of the line
     ///             is null; it then returns the point.
-    static private func getOverlapBetween(_ line1: Line, and line2: Line) -> CollisionTestResult {
+    static private func getOverlap(between line1: Line, and line2: Line) -> CollisionTestResult {
         // We first check if the two lines are colinear.
         let testVector: Vector2D = [line2.p1.x - line1.p1.x, line2.p1.y - line1.p1.y]
         guard testVector.isParallel(to: line1.vector) else { return .none }

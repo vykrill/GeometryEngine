@@ -8,8 +8,8 @@ final class AngleTests: XCTestCase {
     }
 
     func testAngleDifference() {
-        let dif1 = Angle.getDifferenceBetween(0.0, and: Double.pi / 4)
-        let dif2 = Angle.getDifferenceBetween(Double.pi / 4, and: 0.0)
+        let dif1 = Angle.getDifference(between: 0.0, and: Double.pi / 4)
+        let dif2 = Angle.getDifference(between: Double.pi / 4, and: 0.0)
         print(dif1)
         print(dif2)
     }

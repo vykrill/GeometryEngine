@@ -35,7 +35,7 @@ struct Angle {
     }
 
     /// Returns the angle between two angles.
-    static func getDifferenceBetween(_ a1: Double, and a2: Double) -> Double {
+    static func getDifference(between a1: Double, and a2: Double) -> Double {
         abs(getRelativeAngle(of: a1) - getRelativeAngle(of: a2))
     }
 
