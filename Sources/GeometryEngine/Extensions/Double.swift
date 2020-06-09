@@ -17,6 +17,13 @@ extension Double {
 
     /// Checks if two numbers are approximately equal.
     static func ~=(_ left: Double, _ right: Double) -> Bool {
-        areApproximatelyEquals(left, and: right, precision: 5)
+        areApproximatelyEqual(left, and: right, precision: Self.equalityPrecision)
     }
+
+    /// The level of precision used by the `~=` operator.
+    ///
+    /// You might also use the `areApproximatelyEqual(_: and:)` method in common.swift for temporary change in precision.
+    static var equalityPrecision = 5
+    /// The default value of `equalityPrecision`.
+    static let defaultEqualityPrecision = 5
 }
