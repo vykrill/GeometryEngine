@@ -56,10 +56,26 @@ final class LineTests: XCTestCase {
     
     }
 
+    func testPointInward() {
+        let line = Line([3, 3], [4, 4])
+        //Clockwise tests
+        XCTAssertTrue(line.isPointInward([0, 0]))
+        XCTAssertTrue(line.isPointInward([1, 0]))
+        XCTAssertFalse(line.isPointInward([3, 6]))
+        XCTAssertTrue(line.isPointInward([6, 5]))
+
+        // Counter-clockwise
+        XCTAssertTrue(line.isPointInward([0, 0], clockwise: false))
+        XCTAssertFalse(line.isPointInward([1, 0], clockwise: false))
+        XCTAssertTrue(line.isPointInward([3, 6], clockwise: false))
+        XCTAssertFalse(line.isPointInward([6, 5], clockwise: false))
+    }
+
     static var allTests = [
         ("LineInits", testInits),
         ("LineComputed", testComputedProperties),
         ("LineContains", testContains),
-        ("LineIntersections", testIntersections)
+        ("LineIntersections", testIntersections),
+        ("LinePointInward", testPointInward)
     ]
 }

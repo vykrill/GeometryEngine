@@ -152,4 +152,29 @@ struct Line: Equatable {
 
         return .segment(section: result)
     }
+
+    /// Returns whether or not the specified point is contained in the line's container shape.
+    ///
+    /// The result depends on the order the lines were created in; clockwise or counter-clockwise. 
+    ///  To evaluate this, we create a test vector from `p1` to the test point. We then calculate the
+    ///  smallest angle between the test vector and the line. In a clockwise polygon, this new angle 
+    ///  must be to the left of the line. It is the opposite in a counter-clockwise polygon.
+    ///
+    /// - parameters:
+    ///     * point: The test point.
+    ///     * clockwise: If the line was created in a clockwise order. Defaults to `true`.
+    /// - returns: `true` if the point is contained in the shape from this line point of view;
+    ///             otherwise `false`.
+    func isPointInward(_ point: Vector2D, clockwise: Bool = true) -> Bool {
+         // We make a vector to the point to test.
+         let testVector: Vector2D = [point.x - self.p1.x, point.y - self.p1.y]
+
+        // We check the angle of `testVector` relative to the line's angle.
+        // We also make sure the result is positive.
+        var result = testVector.angle - Angle.getRelativeAngle(of: self.angle)
+        result += result < 0 ? 2 * π : 0
+
+        // The result depends on whether or not the lines were created in a clockwise order.
+         return clockwise ? result >= π : result <= π
+    }
 }
