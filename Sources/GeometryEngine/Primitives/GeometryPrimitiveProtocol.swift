@@ -6,6 +6,6 @@
 
 /// A component of a shape.
 protocol GeometryPrimitive {
-    func isPointInward(_: Vector2D, clockwise: Bool)
+    func isPointInward(_: Vector2D, clockwise: Bool) -> Bool
     
 }
