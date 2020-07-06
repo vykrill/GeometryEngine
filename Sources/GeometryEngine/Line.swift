@@ -13,7 +13,7 @@ import Foundation
 ///
 ///     // Creates a line from (0, 0) to (1, 0).
 ///     let line = Line([0, 0], [1, 0])
-struct Line: Equatable {
+struct Line: Equatable, GeometryPrimitive {
     /// The first point composing the line.
     var p1: Vector2D
     /// The second point composign the line.
