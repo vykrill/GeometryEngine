@@ -18,6 +18,11 @@ protocol Geometry {
 // MARK: Default implementations
 extension Geometry {
     func contains(_ point: Vector2D) -> Bool {
+
+        guard primitives.count > 0 else {
+            return false
+        }
+
         for primitive in self.primitives {
             if !primitive.isPointInward(point, clockwise: Self.clockwise) {
                 return false
@@ -25,4 +30,25 @@ extension Geometry {
         }
         return true
     }
+
+    func intersection(with geometry: Geometry) -> [CollisionTestResult] {
+        guard self.primitives.count > 0 && geometry.primitives.count > 0 else {
+            return []
+        }
+
+        var results = [CollisionTestResult]()
+
+        for primitive in self.primitives {
+            for otherPrimitive in geometry.primitives {
+                let result = CommonFunctions.intersection(between: primitive, and: otherPrimitive)
+                if result != .none {
+                    results.append(result)
+                }
+            }
+        }
+
+        return results
+        
+    } 
+    
 }
