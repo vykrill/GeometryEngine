@@ -5,8 +5,10 @@
 //
 
 protocol Geometry {
+    /// The basic geometry which compose the shape.
     var primitives: [GeometryPrimitive] { get }
 
+    /// If the primitives are created in a clockwise order or not. Usefull for collision detection.
     static var clockwise: Bool { get }
     
     /// Returns whether or not this geometry contains the specified point.
