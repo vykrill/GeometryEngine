@@ -7,6 +7,8 @@
 protocol Geometry {
     /// The basic geometry which compose the shape.
     var primitives: [GeometryPrimitive] { get }
+    
+    var vertices: [Vector2D] { get }
 
     /// If the primitives are created in a clockwise order or not. Usefull for collision detection.
     static var clockwise: Bool { get }
@@ -19,6 +21,20 @@ protocol Geometry {
 
 // MARK: Default implementations
 extension Geometry {
+    
+    var vertices: [Vector2D] {
+        var returnValue = [Vector2D]()
+        for primitive in self.primitives {
+            for point in primitive.vertices {
+                if !returnValue.contains(point) {
+                    returnValue.append(point)
+                }
+            }
+        }
+        
+        return returnValue
+    }
+    
     func contains(_ point: Vector2D) -> Bool {
 
         guard primitives.count > 0 else {
@@ -50,7 +66,6 @@ extension Geometry {
         }
 
         return results
-        
     } 
     
 }
