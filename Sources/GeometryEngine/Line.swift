@@ -189,5 +189,5 @@ struct Line: Equatable, GeometryPrimitive {
          return clockwise ? (resultAngle >= π && resultAngle <= 2 * π) : resultAngle <= π
     }
     
-    var points: [Vector2D] { [p1, p2] }
+    var vertices: [Vector2D] { [p1, p2] }
 }

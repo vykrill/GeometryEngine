@@ -7,5 +7,5 @@
 /// A component of a shape.
 protocol GeometryPrimitive {
     func isPointInward(_: Vector2D, clockwise: Bool) -> Bool
-    var points: [Vector2D] { get }
+    var vertices: [Vector2D] { get }
 }
