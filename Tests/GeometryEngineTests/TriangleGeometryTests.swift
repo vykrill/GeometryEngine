@@ -21,10 +21,21 @@ final class TriangleTests: XCTestCase {
 
         // Contains tests
         XCTAssertFalse(t1.contains(p1))
-        XCTAssertTrue(t1.contains(p2)) // failed
+        XCTAssertTrue(t1.contains(p2))
         XCTAssertTrue(t1.contains(p3))
         XCTAssertTrue(t1.contains(p4))
-        XCTAssertFalse(t1.contains(p5)) // failed
+        XCTAssertFalse(t1.contains(p5))
+        
+            print(t1.intersection(with: t2))
+        XCTAssertTrue(t1.intersection(with: t2).count == 2)
+            print(t2.intersection(with: t1))
+        XCTAssertTrue(t2.intersection(with: t1).count == 2)
+        
+        // Since two sides compose a corner, there is one more collision detected.
+        print(t1.intersection(with: t3))
+        XCTAssertTrue(t1.intersection(with: t3).count == 4)
+        
+        print(t4.intersection(with: t1))
     }
     
     static var allTests = [

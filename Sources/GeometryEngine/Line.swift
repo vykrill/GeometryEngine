@@ -109,13 +109,18 @@ struct Line: Equatable, GeometryPrimitive {
         guard !line1.vector.isParallel(to: line2.vector) else { return nil }
 
         // Angle between the two lines.
-        let angle1 = Angle.getDifference(between: line1.angle, and: line2.angle)
+        var angle1 = abs(line1.angle - line2.angle)
+        if angle1 > π {
+            angle1 = (2 * π) - angle1
+        }
         
         let vector1 = line2.p2 - line1.p1
 
+        let line1i = Line(line1.p2, line1.p1)
+        
         // Angle between line1 and vector1.
-        var angle2 = Angle.getDifference(between: vector1.angle, and: line1.angle)
-        if angle2 > π { angle2 -= π }
+        var angle2 = abs(line1i.angle - vector1.angle)
+        if angle2 > π { angle2 = (2 * π) - angle2 }
 
         // Length to remove from line2.
         let length = (sin(angle2) * vector1.length) / sin(angle1)
