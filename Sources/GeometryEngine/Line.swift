@@ -174,10 +174,10 @@ struct Line: Equatable, GeometryPrimitive {
 
         // We check the angle of `testVector` relative to the line's angle.
         // We also make sure the result is positive.
-        var result = testVector.angle - Angle.getRelativeAngle(of: self.angle)
-        result += result < 0 ? 2 * π : 0
+        var resultAngle = testVector.angle - Angle.getRelativeAngle(of: self.angle)
+        resultAngle += resultAngle < 0 ? 2 * π : 0
 
         // The result depends on whether or not the lines were created in a clockwise order.
-         return clockwise ? result >= π : result <= π
+         return clockwise ? (resultAngle >= π && resultAngle <= 2 * π) : resultAngle <= π
     }
 }
