@@ -166,6 +166,9 @@ struct Line: Equatable, GeometryPrimitive {
     /// - returns: `true` if the point is contained in the shape from this line point of view;
     ///             otherwise `false`.
     func isPointInward(_ point: Vector2D, clockwise: Bool = true) -> Bool {
+
+        if self.contains(point) { return true }
+
          // We make a vector to the point to test.
          let testVector: Vector2D = [point.x - self.p1.x, point.y - self.p1.y]
 
