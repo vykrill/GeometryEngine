@@ -2,10 +2,6 @@ import XCTest
 @testable import GeometryEngine
 
 final class TriangleTests: XCTestCase {
-    func initTest() {
-        let tri1: Triangle = [[0, 0], [0, 1], [1, 0]]
-    }
-
     func testCollision() {
         
         let t1: Triangle = [[0, 0], [0, 3], [3, 0]]
@@ -19,6 +15,9 @@ final class TriangleTests: XCTestCase {
         let p4: Vector2D = [2, 1]
         let p5: Vector2D = [3, 1]
 
+        // Points test
+        XCTAssertTrue(t1.vertices.count == 3)
+        
         // Contains tests
         XCTAssertFalse(t1.contains(p1))
         XCTAssertTrue(t1.contains(p2))
@@ -30,16 +29,18 @@ final class TriangleTests: XCTestCase {
         XCTAssertTrue(t1.intersection(with: t2).count == 2)
             print(t2.intersection(with: t1))
         XCTAssertTrue(t2.intersection(with: t1).count == 2)
+        XCTAssertEqual(t1.collision(with: t2).count, 3)
         
         // Since two sides compose a corner, there is one more collision detected.
         print(t1.intersection(with: t3))
         XCTAssertTrue(t1.intersection(with: t3).count == 4)
         
-        print(t4.intersection(with: t1))
+        
+        XCTAssertEqual(t1.collision(with: t4).count, 3)
+        print(t4.collision(with: t1))
     }
     
     static var allTests = [
-        ("TriangleInit", initTest),
         ("TriangleCollision", testCollision)
     ]
 }

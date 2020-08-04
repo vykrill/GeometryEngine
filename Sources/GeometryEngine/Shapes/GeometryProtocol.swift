@@ -15,8 +15,13 @@ protocol Geometry {
     
     /// Returns whether or not this geometry contains the specified point.
     func contains(_ point: Vector2D) -> Bool
+    
+    func contains(_ points: [Vector2D]) -> [CollisionTestResult]
+    
     /// Returns whether or not there is a collision between two shapes.
     func intersection(with geometry: Geometry) -> [CollisionTestResult]
+    
+    func collision(with geometry: Geometry) -> [CollisionTestResult]
 }
 
 // MARK: Default implementations
@@ -48,6 +53,16 @@ extension Geometry {
         }
         return true
     }
+    
+    func contains(_ points: [Vector2D]) -> [CollisionTestResult] {
+        var result = [CollisionTestResult]()
+        for point in points {
+            if self.contains(point) {
+                result.append(.point(position: point))
+            }
+        }
+        return result
+    }
 
     func intersection(with geometry: Geometry) -> [CollisionTestResult] {
         guard self.primitives.count > 0 && geometry.primitives.count > 0 else {
@@ -68,4 +83,15 @@ extension Geometry {
         return results
     } 
     
+    func collision(with geometry: Geometry) -> [CollisionTestResult] {
+        // We first collect the lines intersections
+        var results = self.intersection(with: geometry)
+        
+        // current shape points in geometry
+        results.append(contentsOf: geometry.contains(self.vertices))
+        // geometry points in self
+        results.append(contentsOf: self.contains(geometry.vertices))
+        
+        return results
+    }
 }
