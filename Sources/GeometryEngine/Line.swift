@@ -158,6 +158,8 @@ struct Line: Equatable, GeometryPrimitive {
 
         return .segment(section: result)
     }
+    
+    // MARK: Geometry Primitive
 
     /// Returns whether or not the specified point is contained in the line's container shape.
     ///
@@ -186,4 +188,6 @@ struct Line: Equatable, GeometryPrimitive {
         // The result depends on whether or not the lines were created in a clockwise order.
          return clockwise ? (resultAngle >= π && resultAngle <= 2 * π) : resultAngle <= π
     }
+    
+    var points: [Vector2D] { [p1, p2] }
 }
