@@ -105,6 +105,7 @@ struct Line: Equatable, GeometryPrimitive {
     ///          considered like infinite lines.
     /// - returns: `nil` if the two lines are parallel, otherwise the intersection point.
     static private func getIntersectionPoint(between line1: Line, and line2: Line) -> Vector2D? {
+        // TODO: Correct this method
         guard !line1.vector.isParallel(to: line2.vector) else { return nil }
 
         // Angle between the two lines.
