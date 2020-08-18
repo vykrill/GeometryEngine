@@ -13,7 +13,7 @@ import Foundation
 ///
 ///     let v1: Vector2D = [0.0, 1.0]
 @dynamicMemberLookup
-struct Vector2D: Equatable, ExpressibleByArrayLiteral {
+struct Vector2D: Equatable, ExpressibleByArrayLiteral, Hashable {
     fileprivate var storage = SIMD2<Double>()
 
     /// The length of the vector.
