@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Numerics
 
 /// A vector in 2D space. 
 /// 
