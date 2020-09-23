@@ -114,4 +114,12 @@ extension Geometry {
         
         return results
     }
+
+    func getProjectionLines(direction: Vector2D) -> [Line] {
+        var result = [Line]()
+        for vertice in self.vertices {
+            result.append(Line(vertice, vertice + direction))
+        }
+        return result
+    }
 }

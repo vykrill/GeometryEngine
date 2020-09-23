@@ -38,6 +38,10 @@ final class TriangleTests: XCTestCase {
         
         XCTAssertEqual(t1.collision(with: t4).count, 3)
         print(t4.collision(with: t1))
+
+        // We confirm the working of GeometryPrimitive.count
+        XCTAssertEqual(t1.vertices.count, 3)
+        XCTAssertEqual(t1.getProjectionLines(direction: [1.0, 1.0]).count, 3);
     }
     
     static var allTests = [
